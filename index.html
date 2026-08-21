@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SplitCost — Know what your split actually costs</title>
+<meta name="description" content="Free, private divorce financial recovery toolkit: cost-of-split calculator, recovery roadmap, debt triage. Your numbers never leave your browser.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+</head>
+<body>
+
+<header class="hero">
+  <nav>
+    <span class="logo">🧭 SplitCost</span>
+    <div class="navlinks">
+      <a href="#calculator">Calculator</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#paperwork">Paperwork</a>
+      <a href="#debts">Debt Triage</a>
+    </div>
+  </nav>
+  <div class="hero-inner">
+    <h1>Know what your split <em>actually</em> costs.</h1>
+    <p class="tagline">A free, private toolkit for facing — or recovering from — divorce.
+    No signup. No data leaves your browser. Just the number nobody else will give you.</p>
+    <a class="btn btn-primary" href="#calculator">Run the numbers →</a>
+    <p class="privacy-note">🔒 100% client-side: your figures never touch a server.</p>
+  </div>
+</header>
+
+<section class="voices">
+  <h2>You're not the only one asking this</h2>
+  <div class="quote-grid">
+    <blockquote>"We can't afford a divorce, 2 apartments and child care — but we are miserable."</blockquote>
+    <blockquote>"The lawyers won't give her any information during the free consultations."</blockquote>
+    <blockquote>"It's near impossible to accurately gauge what it's going to cost."</blockquote>
+  </div>
+  <p class="voices-src">Recent public posts from r/divorce, r/personalfinance &amp; r/debt.</p>
+</section>
+
+<main>
+<!-- ============ CALCULATOR ============ -->
+<section id="calculator">
+  <h2>💰 Cost-of-Split Calculator</h2>
+  <p class="section-sub">Compare <strong>staying</strong> vs <strong>splitting</strong> over 12 months. Estimates only — but real ones you control.</p>
+
+  <div class="calc-grid">
+    <fieldset>
+      <legend>Today (one household)</legend>
+      <label>Your monthly take-home pay <input type="number" id="incMe" min="0" placeholder="e.g. 3200"></label>
+      <label>Partner's monthly take-home pay <input type="number" id="incPartner" min="0" placeholder="e.g. 2800"></label>
+      <label>Rent / mortgage (current, total) <input type="number" id="housing" min="0" placeholder="e.g. 1600"></label>
+      <label>Utilities (current, total) <input type="number" id="utilities" min="0" placeholder="e.g. 300"></label>
+      <label>Groceries, transport, insurance etc. <input type="number" id="otherLiving" min="0" placeholder="e.g. 900"></label>
+      <label>Childcare / kids' costs (total) <input type="number" id="childcare" min="0" placeholder="e.g. 600"></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>After a split (two households)</legend>
+      <label>New housing cost — yours <input type="number" id="rentMe" min="0" placeholder="e.g. 1100"></label>
+      <label>New housing cost — theirs <input type="number" id="rentPartner" min="0" placeholder="e.g. 1100"></label>
+      <label><span>Utilities each</span> <input type="number" id="utilEach" min="0" placeholder="auto ≈ 60% of today"></label>
+      <label><span>Living costs each</span> <input type="number" id="otherEach" min="0" placeholder="auto ≈ 75% of today"></label>
+      <label>One-time legal / court costs <select id="legalTier">
+        <option value="500">DIY / online forms (~$500)</option>
+        <option value="5000" selected>Mediated / uncontested (~$5,000)</option>
+        <option value="15000">Contested / lawyers (~$15,000)</option>
+        <option value="30000">High-conflict (~$30,000+)</option>
+      </select></label>
+      <button class="btn btn-primary" id="calcBtn">Calculate my number</button>
+    </fieldset>
+  </div>
+
+  <div id="calcResult" class="result hidden" aria-live="polite">
+    <div class="verdict" id="verdict"></div>
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num" id="staySurplus">—</span><span class="stat-label">surplus today (both incomes)</span></div>
+      <div class="stat"><span class="stat-num" id="splitDelta">—</span><span class="stat-label">extra cost/month if you split</span></div>
+      <div class="stat"><span class="stat-num" id="yearOne">—</span><span class="stat-label">first-year hit incl. legal fees</span></div>
+    </div>
+    <details class="table-details">
+      <summary>Show 12-month side-by-side</summary>
+      <div class="table-wrap"><table id="monthTable"></table></div>
+    </details>
+    <p class="fineprint">Estimates based on your inputs. Real outcomes vary with support orders, taxes and local costs — treat this as a planning compass, not a verdict.</p>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap">
+  <h2>✅ Financial Recovery Roadmap</h2>
+  <p class="section-sub">Work these in order. Progress saves privately in this browser only.</p>
+  <ol id="checklist" class="checklist"></ol>
+  <button class="btn btn-ghost" id="resetChecklist">Reset progress</button>
+</section>
+
+<!-- ============ PAPERWORK ============ -->
+<section id="paperwork">
+  <h2>📄 Paperwork Navigator</h2>
+  <p class="section-sub">Plain-language map of the financial paperwork most divorces require. Information only — <strong>not legal advice</strong>; rules differ by place.</p>
+  <div class="accordion">
+    <details><summary>Financial Affidavit / Disclosure</summary><p>The court's official snapshot of your money: income, expenses, assets, debts. You'll swear it's true — accuracy matters more than optimism. Gather 3–6 months of statements before filling anything in.</p></details>
+    <details><summary>Asset &amp; Debt Worksheet</summary><p>Everything either of you owns or owes, usually tagged marital vs separate. Bank accounts, retirement funds, vehicles, house, credit cards, loans. Copy account numbers; never close accounts unilaterally mid-process unless advised.</p></details>
+    <details><summary>Budget / Expenses Form</summary><p>Your monthly cost of living — courts use it for support decisions. This is exactly what the calculator above helps you estimate honestly.</p></details>
+    <details><summary>Settlement Agreement</summary><p>The contract dividing property, debt and support. Mediators or document services can draft uncontested versions for far less than litigation. Read every number against your worksheets before signing.</p></details>
+    <details><summary>Support Calculations</summary><p>Child (and sometimes spousal) support usually follow statutory formulas from both incomes + parenting time. Free calculators exist for most jurisdictions — search "[your location] child support calculator".</p></details>
+  </div>
+</section>
+
+<!-- ============ DEBT TRIAGE ============ -->
+<section id="debts">
+  <h2>💳 Debt Triage</h2>
+  <p class="section-sub">Post-split debt is common. Order your payoffs: <strong>avalanche</strong> (highest rate first — cheapest) or <strong>snowball</strong> (smallest balance first — most motivating).</p>
+
+  <div id="debtRows"></div>
+  <div class="debt-controls">
+    <button class="btn btn-ghost" id="addDebt">+ Add a debt</button>
+    <select id="strategy"><option value="avalanche">Avalanche (rate first)</option><option value="snowball">Snowball (balance first)</option></select>
+    <label class="inline">Extra per month <input type="number" id="extraPay" min="0" value="100"></label>
+    <button class="btn btn-primary" id="debtBtn">Plan my payoff</button>
+  </div>
+  <div id="debtResult" class="result hidden" aria-live="polite"></div>
+</section>
+</main>
+
+<footer>
+  <p><strong>SplitCost</strong> is free education, not legal or financial advice. Figures are estimates from your own inputs.</p>
+  <p>🔒 Everything runs in your browser — no accounts, no tracking, no server.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
