@@ -3,8 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SplitCost — Know what your split actually costs</title>
-<meta name="description" content="Free, private divorce financial recovery toolkit: cost-of-split calculator, recovery roadmap, debt triage. Your numbers never leave your browser.">
+<title>SplitCost — Free Divorce Cost Calculator | Can I Afford to Divorce?</title>
+<meta name="description" content="Free divorce cost calculator: compare staying vs splitting month by month, plus a financial recovery roadmap, paperwork guide and debt payoff triage. Private — your numbers never leave your browser.">
+<link rel="canonical" href="https://sidequestdigital.github.io/splitcost/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0e7c66">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SplitCost">
+<meta property="og:title" content="SplitCost — Know what your split actually costs">
+<meta property="og:description" content="Free, private divorce financial toolkit: cost-of-split calculator, recovery roadmap, debt triage. No signup — your numbers never leave your browser.">
+<meta property="og:url" content="https://sidequestdigital.github.io/splitcost/">
+<meta property="og:image" content="https://sidequestdigital.github.io/splitcost/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SplitCost — know what your split actually costs. Free divorce financial toolkit.">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SplitCost — Know what your split actually costs">
+<meta name="twitter:description" content="Free divorce cost calculator + recovery roadmap + debt triage. 100% private, runs in your browser.">
+<meta name="twitter:image" content="https://sidequestdigital.github.io/splitcost/og-image.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "SplitCost",
+      "url": "https://sidequestdigital.github.io/splitcost/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "Free, private divorce financial recovery toolkit: cost-of-split calculator, recovery roadmap, paperwork navigator and debt payoff triage.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "Divorce cost calculator, 12-month staying-vs-splitting projection, financial recovery checklist, debt avalanche/snowball triage"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I afford to get divorced?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on your income, housing options, childcare and legal route. SplitCost's free calculator compares your current one-household budget against a two-household budget over 12 months, including legal fee tiers from DIY (~$500) to high-conflict ($30,000+), so you can see the real monthly and first-year numbers before deciding." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a divorce cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Costs vary widely: DIY online filings can run a few hundred dollars, mediated or uncontested divorces average around $5,000, and contested cases with lawyers routinely exceed $15,000-$30,000. Beyond legal fees, the bigger long-term cost is usually running two households instead of one." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SplitCost really private?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. SplitCost is a static website with no server, no accounts and no analytics. Every calculation runs in your own browser, and nothing you type is ever transmitted or stored anywhere except optional checklist progress in your own device's local storage." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is SplitCost financial or legal advice?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. SplitCost is a free educational planning tool. It gives you estimates based on the numbers you enter so you can prepare for consultations with qualified professionals — it does not replace legal, financial or tax advice." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does SplitCost cost anything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No — it's completely free and open source (MIT license). There are no accounts, subscriptions or ads." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
 </head>
@@ -18,6 +88,7 @@
       <a href="#roadmap">Roadmap</a>
       <a href="#paperwork">Paperwork</a>
       <a href="#debts">Debt Triage</a>
+      <a href="#faq">FAQ</a>
     </div>
   </nav>
   <div class="hero-inner">
@@ -121,6 +192,18 @@
     <button class="btn btn-primary" id="debtBtn">Plan my payoff</button>
   </div>
   <div id="debtResult" class="result hidden" aria-live="polite"></div>
+</section>
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <h2>❓ Frequently Asked Questions</h2>
+  <p class="section-sub">Straight answers to the questions people type into search at 2am.</p>
+  <div class="accordion">
+    <details><summary>Can I afford to get divorced?</summary><p>It depends on your income, housing options, childcare and legal route. The calculator above compares your current one-household budget against a two-household budget over 12 months — including legal fee tiers from DIY (~$500) to high-conflict ($30,000+) — so you can see the real monthly and first-year numbers before deciding.</p></details>
+    <details><summary>How much does a divorce cost?</summary><p>Costs vary widely: DIY online filings can run a few hundred dollars, mediated or uncontested divorces average around $5,000, and contested cases with lawyers routinely exceed $15,000–$30,000. Beyond legal fees, the bigger long-term cost is usually running two households instead of one.</p></details>
+    <details><summary>Is SplitCost really private?</summary><p>Yes. SplitCost is a static website with no server, no accounts and no analytics. Every calculation runs in your own browser, and nothing you type is ever transmitted or stored anywhere except optional checklist progress in your own device's local storage.</p></details>
+    <details><summary>Is SplitCost financial or legal advice?</summary><p>No. SplitCost is a free educational planning tool. It gives you estimates based on the numbers you enter so you can prepare for consultations with qualified professionals — it does not replace legal, financial or tax advice.</p></details>
+    <details><summary>Does SplitCost cost anything?</summary><p>No — it's completely free and open source (<a href="https://github.com/SideQuestDigital/splitcost" rel="noopener">MIT license</a>). There are no accounts, subscriptions or ads.</p></details>
+  </div>
 </section>
 </main>
 

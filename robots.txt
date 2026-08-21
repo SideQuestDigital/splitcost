@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sidequestdigital.github.io/splitcost/sitemap.xml
